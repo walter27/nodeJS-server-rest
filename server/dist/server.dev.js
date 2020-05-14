@@ -15,8 +15,9 @@ app.use(bodyParser.urlencoded({
   extended: false
 })); // parse application/json
 
-app.use(bodyParser.json());
-app.use(require('./routes/usuario')); //dstabase mongoose
+app.use(bodyParser.json()); //configuracion del index para las ruta global
+
+app.use(require('./routes/index')); //dstabase mongoose
 
 mongoose.connect(process.env.URLDB, {
   useNewUrlParser: true,

@@ -11,7 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-app.use(require('./routes/usuario'));
+//configuracion del index para las ruta global
+app.use(require('./routes/index'));
+
 
 
 //dstabase mongoose

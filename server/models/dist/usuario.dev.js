@@ -5,7 +5,7 @@ var monggose = require('mongoose');
 var unique = require('mongoose-unique-validator');
 
 var rolesValidos = {
-  values: ['ADMIN:ROLE', 'USER_ROLE'],
+  values: ['ADMIN_ROLE', 'USER_ROLE'],
   message: '{VALUE} no es un rol valido'
 };
 var Schema = monggose.Schema;

@@ -10,7 +10,11 @@ var bcrypt = require('bcrypt');
 
 var _ = require('underscore');
 
-app.get('/usuario', function (req, res) {
+var _require = require('../middlewares/autenticacion'),
+    verficaToken = _require.verficaToken,
+    verificaRol = _require.verificaRol;
+
+app.get('/usuario', verficaToken, function (req, res) {
   var desde = req.query.desde || 0;
   desde = Number(desde);
   var limite = req.query.limite || 5;
@@ -36,7 +40,7 @@ app.get('/usuario', function (req, res) {
     });
   });
 });
-app.post('/usuario', function (req, res) {
+app.post('/usuario', [verficaToken, verificaRol], function (req, res) {
   var body = req.body;
   var usuario = new Usuario({
     nombre: body.nombre,
@@ -59,7 +63,7 @@ app.post('/usuario', function (req, res) {
     });
   });
 });
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id', [verficaToken, verificaRol], function (req, res) {
   var id = req.params.id;
 
   var body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
@@ -81,7 +85,7 @@ app.put('/usuario/:id', function (req, res) {
     });
   });
 });
-app["delete"]('/usuario/:id', function (req, res) {
+app["delete"]('/usuario/:id', [verficaToken, verificaRol], function (req, res) {
   var id = req.params.id; //Usuario.findByIdAndRemove(id, (err, usuarioBD) => {
 
   var cambiaEstado = {
