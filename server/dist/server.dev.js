@@ -8,14 +8,18 @@ var app = express();
 
 var bodyParser = require('body-parser');
 
-var mongoose = require('mongoose'); // parse application/x-www-form-urlencoded
+var mongoose = require('mongoose');
+
+var path = require('path'); // parse application/x-www-form-urlencoded
 
 
 app.use(bodyParser.urlencoded({
   extended: false
 })); // parse application/json
 
-app.use(bodyParser.json()); //configuracion del index para las ruta global
+app.use(bodyParser.json()); //habilitar la carpeta public
+
+app.use(express["static"](path.resolve(__dirname, '../public'))); //configuracion del index para las ruta global
 
 app.use(require('./routes/index')); //dstabase mongoose
 
