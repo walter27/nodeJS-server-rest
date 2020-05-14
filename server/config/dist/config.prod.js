@@ -1,1 +1,1 @@
-"use strict";var urlDB;process.env.PORT=process.env.PORT||3e3,urlDB="mongodb+srv://mongo:1234@cluster0-iyyjm.mongodb.net/test?retryWrites=true&w=majority",process.env.URLDB=urlDB;
+"use strict";var urlDB;process.env.PORT=process.env.PORT||3e3,process.env.NODE_ENV=process.env.NODE_ENV||"dev",urlDB="mongodb+srv://mongo:1234@cluster0-iyyjm.mongodb.net/test?retryWrites=true&w=majority",process.env.URLDB=urlDB;
