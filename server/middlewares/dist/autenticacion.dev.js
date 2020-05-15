@@ -27,7 +27,6 @@ var verficaToken = function verficaToken(req, res, next) {
 
 var verificaRol = function verificaRol(req, res, next) {
   var usuario = req.usuario;
-  console.log(usuario.role);
 
   if (usuario.role === 'ADMIN_ROLE') {
     next();
