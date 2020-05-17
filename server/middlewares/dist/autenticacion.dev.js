@@ -38,9 +38,30 @@ var verificaRol = function verificaRol(req, res, next) {
       }
     });
   }
+}; //==================================================
+//          verificar token  para imagen
+//==================================================
+
+
+var verficaTokenImg = function verficaTokenImg(req, res, next) {
+  var token = req.query.token;
+  jwt.verify(token, process.env.SEED, function (err, decode) {
+    if (err) {
+      return res.status(401).json({
+        ok: false,
+        err: {
+          message: 'token no valido'
+        }
+      });
+    }
+
+    req.usuario = decode.usuario;
+    next();
+  });
 };
 
 module.exports = {
   verficaToken: verficaToken,
-  verificaRol: verificaRol
+  verificaRol: verificaRol,
+  verficaTokenImg: verficaTokenImg
 };

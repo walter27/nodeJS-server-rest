@@ -17,7 +17,7 @@ var _require = require('../middlewares/autenticacion'),
 app.get('/usuario', verficaToken, function (req, res) {
   var desde = req.query.desde || 0;
   desde = Number(desde);
-  var limite = req.query.limite || 5;
+  var limite = req.query.limite || 17;
   limite = Number(limite);
   Usuario.find({
     estado: true
